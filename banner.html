@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twitter Banner - Complexity Refugees to Sovereign Builders</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background: #f0f0f0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        
+        .banner-container {
+            width: 1500px;
+            height: 500px;
+            margin: 0 auto 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .description {
+            max-width: 1500px;
+            margin: 0 auto 20px;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        h2 {
+            margin-top: 0;
+            color: #333;
+        }
+        
+        /* Banner Design 1: Escape to Build */
+        #banner1 {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 80px;
+            position: relative;
+        }
+        
+        #banner1::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 500"><defs><pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse"><path d="M 50 0 L 0 0 0 50" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/></pattern></defs><rect width="1500" height="500" fill="url(%23grid)"/></svg>');
+            pointer-events: none;
+        }
+        
+        #banner1 .left-side {
+            flex: 1;
+            z-index: 2;
+        }
+        
+        #banner1 .tagline {
+            font-size: 48px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+            line-height: 1.2;
+        }
+        
+        #banner1 .highlight {
+            color: #e94560;
+            position: relative;
+        }
+        
+        #banner1 .subtitle {
+            font-size: 20px;
+            color: #94a3b8;
+            font-weight: 400;
+            margin-top: 20px;
+        }
+        
+        #banner1 .visual {
+            position: absolute;
+            right: 60px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 400px;
+            height: 400px;
+        }
+        
+        #banner1 .maze-exit {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+        
+        #banner1 .maze {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 200px;
+            height: 200px;
+            border: 3px solid #333;
+            background: repeating-linear-gradient(0deg, #333 0, #333 10px, transparent 10px, transparent 20px),
+                        repeating-linear-gradient(90deg, #333 0, #333 10px, transparent 10px, transparent 20px);
+            opacity: 0.3;
+        }
+        
+        #banner1 .arrow {
+            position: absolute;
+            left: 180px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 60px;
+            height: 4px;
+            background: #e94560;
+        }
+        
+        #banner1 .arrow::after {
+            content: '';
+            position: absolute;
+            right: -10px;
+            top: -8px;
+            width: 0;
+            height: 0;
+            border-left: 20px solid #e94560;
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+        }
+        
+        #banner1 .tools {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+        
+        #banner1 .tool {
+            width: 60px;
+            height: 60px;
+            background: #0ea5e9;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 4px 20px rgba(14, 165, 233, 0.3);
+        }
+        
+        /* Banner Design 2: Network Builder */
+        #banner2 {
+            background: #0a0a0a;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        #banner2 .network-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0.3;
+        }
+        
+        #banner2 .node {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: #10b981;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #10b981;
+        }
+        
+        #banner2 .connection {
+            position: absolute;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #10b981, transparent);
+            transform-origin: left center;
+        }
+        
+        #banner2 .content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            max-width: 900px;
+        }
+        
+        #banner2 .main-text {
+            font-size: 52px;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 10px;
+            letter-spacing: -1px;
+        }
+        
+        #banner2 .highlight2 {
+            background: linear-gradient(90deg, #10b981, #0ea5e9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        #banner2 .subtext {
+            font-size: 18px;
+            color: #6b7280;
+            margin-top: 20px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        
+        /* Banner Design 3: Minimalist Statement */
+        #banner3 {
+            background: #fff;
+            display: flex;
+            align-items: center;
+            padding: 0 100px;
+            position: relative;
+        }
+        
+        #banner3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background: linear-gradient(90deg, #dc2626, #f59e0b, #10b981, #3b82f6);
+        }
+        
+        #banner3 .statement {
+            flex: 1;
+        }
+        
+        #banner3 .line1 {
+            font-size: 36px;
+            color: #000;
+            font-weight: 300;
+            margin-bottom: 10px;
+        }
+        
+        #banner3 .line2 {
+            font-size: 56px;
+            color: #000;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+        
+        #banner3 .line3 {
+            font-size: 24px;
+            color: #6b7280;
+            font-weight: 400;
+        }
+        
+        #banner3 .accent {
+            color: #dc2626;
+        }
+        
+        #banner3 .visual-right {
+            position: absolute;
+            right: 100px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        #banner3 .icon-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: flex-end;
+        }
+        
+        #banner3 .icon-row {
+            display: flex;
+            gap: 15px;
+        }
+        
+        #banner3 .icon {
+            width: 50px;
+            height: 50px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            transition: all 0.3s ease;
+        }
+        
+        #banner3 .icon:hover {
+            border-color: #dc2626;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="description">
+        <h2>Design 1: Escape the Maze</h2>
+        <p>Visual metaphor of escaping the complexity maze to become a builder. Dark, professional gradient with a clear directional flow from chaos to creation.</p>
+    </div>
+    
+    <div class="banner-container" id="banner1">
+        <div class="left-side">
+            <div class="tagline">
+                From <span class="highlight">Complexity Refugees</span><br>
+                To Sovereign Builders
+            </div>
+            <div class="subtitle">
+                Teaching: Cognitive Security • Parallel Economies • Trust Networks
+            </div>
+        </div>
+        <div class="visual">
+            <div class="maze-exit">
+                <div class="maze"></div>
+                <div class="arrow"></div>
+                <div class="tools">
+                    <div class="tool">🔨</div>
+                    <div class="tool">🛠️</div>
+                    <div class="tool">⚡</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="description">
+        <h2>Design 2: Network Builder</h2>
+        <p>Emphasizes the network/community aspect with animated nodes and connections. Dark background with bright green accents representing growth and building.</p>
+    </div>
+    
+    <div class="banner-container" id="banner2">
+        <div class="network-bg" id="network"></div>
+        <div class="content">
+            <div class="main-text">
+                Building <span class="highlight2">Sovereign Networks</span><br>
+                Beyond the Complexity Trap
+            </div>
+            <div class="subtext">
+                For Builders • By Builders • No Permission Needed
+            </div>
+        </div>
+    </div>
+    
+    <div class="description">
+        <h2>Design 3: Bold Minimalist</h2>
+        <p>Clean, high-contrast design that makes a statement. The rainbow bottom bar represents diversity of builders while maintaining professional appearance.</p>
+    </div>
+    
+    <div class="banner-container" id="banner3">
+        <div class="statement">
+            <div class="line1">When creating value gets punished</div>
+            <div class="line2">We Build <span class="accent">New Systems</span></div>
+            <div class="line3">Cognitive Security • Parallel Economies • Human Networks</div>
+        </div>
+        <div class="visual-right">
+            <div class="icon-stack">
+                <div class="icon-row">
+                    <div class="icon">🧠</div>
+                    <div class="icon">🔗</div>
+                </div>
+                <div class="icon-row">
+                    <div class="icon">🏗️</div>
+                    <div class="icon">🤝</div>
+                    <div class="icon">💡</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Animate network for Design 2
+        function createNetwork() {
+            const network = document.getElementById('network');
+            const nodes = [];
+            const connections = [];
+            
+            // Create nodes
+            for (let i = 0; i < 20; i++) {
+                const node = document.createElement('div');
+                node.className = 'node';
+                node.style.left = Math.random() * 100 + '%';
+                node.style.top = Math.random() * 100 + '%';
+                network.appendChild(node);
+                nodes.push({
+                    element: node,
+                    x: parseFloat(node.style.left),
+                    y: parseFloat(node.style.top)
+                });
+            }
+            
+            // Create connections between nearby nodes
+            for (let i = 0; i < nodes.length; i++) {
+                for (let j = i + 1; j < nodes.length; j++) {
+                    const dist = Math.sqrt(
+                        Math.pow(nodes[i].x - nodes[j].x, 2) + 
+                        Math.pow(nodes[i].y - nodes[j].y, 2)
+                    );
+                    
+                    if (dist < 30) {
+                        const connection = document.createElement('div');
+                        connection.className = 'connection';
+                        
+                        const angle = Math.atan2(
+                            nodes[j].y - nodes[i].y,
+                            nodes[j].x - nodes[i].x
+                        ) * 180 / Math.PI;
+                        
+                        connection.style.left = nodes[i].x + '%';
+                        connection.style.top = nodes[i].y + '%';
+                        connection.style.width = dist + '%';
+                        connection.style.transform = `rotate(${angle}deg)`;
+                        
+                        network.appendChild(connection);
+                    }
+                }
+            }
+        }
+        
+        createNetwork();
+        
+        // Animate nodes
+        const nodes = document.querySelectorAll('#banner2 .node');
+        nodes.forEach((node, i) => {
+            node.style.animation = `pulse 2s ease-in-out ${i * 0.1}s infinite`;
+        });
+        
+        // Add pulse animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes pulse {
+                0%, 100% { opacity: 0.3; transform: scale(1); }
+                50% { opacity: 1; transform: scale(1.5); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
