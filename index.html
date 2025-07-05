@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Human Help for Human Problems</title>
+  <!-- Tailwind via CDN for quick styling -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800">
+  <!-- Header -->
+  <header class="text-center py-16 bg-white shadow">
+    <h1 class="text-4xl font-extrabold mb-4">Human Help for Human Problems</h1>
+    <p class="text-lg">ChatGPT‑level pricing with real human guidance</p>
+  </header>
+
+  <!-- Main content -->
+  <main class="max-w-4xl mx-auto px-4 py-12">
+    <!-- Pricing Section -->
+    <section id="pricing" class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <!-- Unlimited Text Support -->
+      <div class="bg-white p-8 rounded-2xl shadow flex flex-col">
+        <h2 class="text-2xl font-bold mb-2">Unlimited Text Support</h2>
+        <p class="mb-6 text-gray-600">$20 / month</p>
+        <a href="#TODO-STRIPE-LINK-20" class="mt-auto inline-block text-center bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-xl transition">
+          Subscribe
+        </a>
+        <!-- TODO: Replace #TODO-STRIPE-LINK-20 with your Stripe Checkout URL -->
+      </div>
+
+      <!-- Unlimited Video Support -->
+      <div class="bg-white p-8 rounded-2xl shadow flex flex-col">
+        <h2 class="text-2xl font-bold mb-2">Unlimited Video Support</h2>
+        <p class="mb-6 text-gray-600">$200 / month</p>
+        <a href="#TODO-STRIPE-LINK-200" class="mt-auto inline-block text-center bg-green-600 hover:bg-green-700 text-white font-semibold py-3 rounded-xl transition">
+          Subscribe
+        </a>
+        <!-- TODO: Replace #TODO-STRIPE-LINK-200 with your Stripe Checkout URL -->
+      </div>
+    </section>
+
+    <!-- Content Locations Section -->
+    <section id="content-locations" class="mt-16">
+      <h2 class="text-2xl font-bold mb-4">Where to Find the Content</h2>
+      <p class="mb-4 text-gray-600">Add links or embeds to courses, livestreams, or community channels below:</p>
+      <ul class="list-disc list-inside space-y-2">
+        <li><!-- TODO: Add content location 1 --></li>
+        <li><!-- TODO: Add content location 2 --></li>
+        <li><!-- TODO: Add content location 3 --></li>
+      </ul>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="text-center py-8 text-sm text-gray-500">
+    © <span id="year"></span> YourName.eth. All rights reserved.
+  </footer>
+
+  <!-- JS: auto-update footer year -->
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
